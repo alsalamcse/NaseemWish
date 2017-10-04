@@ -22,17 +22,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        btnSignin=(Button)findViewById(R.id.btnSignin);
-        btnForget=(Button)findViewById(R.id.btnForget);
-        btnSignup=(Button)findViewById(R.id.btnSignup);
-        etEmail=(EditText)findViewById(R.id.etEmail);
-        etPass=(EditText)findViewById(R.id.etPass);
+        btnSignin = (Button) findViewById(R.id.btnSignin);
+        btnForget = (Button) findViewById(R.id.btnForget);
+        btnSignup = (Button) findViewById(R.id.btnSignup);
+        etEmail = (EditText) findViewById(R.id.etEmail);
+        etPass = (EditText) findViewById(R.id.etPass);
+    }
 
-        public void Onlclick(View v)
-    {
-        if(v==btnSignup)
-        {
-            Intent intent=new Intent(this,SignUP.class);
+    public void Onlclick(View v) {
+        if (v == btnSignup) {
+            Intent intent = new Intent(this, SignUP.class);
             startActivity(intent);
 
         }
@@ -40,5 +39,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    }
 }
+
+
