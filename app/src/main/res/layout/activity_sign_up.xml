@@ -8,7 +8,7 @@
     tools:context="com.naseem.naseemwish.SignUP">
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/etName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -16,7 +16,7 @@
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/editText6"
+        android:id="@+id/etEmail2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -24,7 +24,7 @@
         android:inputType="textEmailAddress" />
 
     <EditText
-        android:id="@+id/editText7"
+        android:id="@+id/etPass2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -32,11 +32,17 @@
         android:inputType="textPassword" />
 
     <EditText
-        android:id="@+id/editText8"
+        android:id="@+id/etRepass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="repass"
         android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="save" />
 
 </LinearLayout>
