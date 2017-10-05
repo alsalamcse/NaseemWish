@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.naseem.naseemwish.mainlistfragments.MainListActivity;
+
 public class MainActivity extends AppCompatActivity {
 
     private EditText etEmail;
@@ -32,6 +34,11 @@ public class MainActivity extends AppCompatActivity {
     public void Onlclick(View v) {
         if (v == btnSignup) {
             Intent intent = new Intent(this, SignUP.class);
+            startActivity(intent);
+
+        }
+        if (v == btnSignin) {
+            Intent intent = new Intent(this, MainListActivity.class);
             startActivity(intent);
 
         }
