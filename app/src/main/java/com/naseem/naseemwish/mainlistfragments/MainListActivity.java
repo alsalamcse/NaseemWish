@@ -1,5 +1,6 @@
 package com.naseem.naseemwish.mainlistfragments;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -19,6 +20,7 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
+import com.naseem.naseemwish.AddItemActivity;
 import com.naseem.naseemwish.R;
 
 public class MainListActivity extends AppCompatActivity {
@@ -62,6 +64,11 @@ public class MainListActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Intent i=new Intent(getBaseContext(), AddItemActivity.class);
+                startActivity(i);
+
+
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
@@ -141,24 +148,27 @@ public class MainListActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-            if (position==0)
-            {
-                if (currentFragment==null)
-                    currentFragment=new CurrntListFragment();
-                 return currentFragment;
+            if (position == 0) {
+                if (currentFragment == null)
 
-            if(position==1)
+                    currentFragment = new CurrntListFragment();
+                return currentFragment;
+            }
+
+
+                if (position == 1)
                 {
-                  if (historyFragment==null) {
-                      historyFragment = new HistoryFragment();
-                  }
-                      return historyFragment;
+
+                    if (historyFragment == null)
+                        historyFragment = new HistoryFragment();
+
+                    return historyFragment;
+
 
                 }
                 return null;
             }
-           return PlaceholderFragment.newInstance(position + 1);
-        }
+
 
         @Override
         public int getCount() {

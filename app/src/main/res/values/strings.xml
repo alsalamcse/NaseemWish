@@ -6,4 +6,9 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="name">Item Name</string>
+    <string name="save">Save Item</string>
+    <string name="amount">Amount To Buy</string>
+    <string name="price">Item Price</string>
+    <string name="unit">Unit</string>
 </resources>
