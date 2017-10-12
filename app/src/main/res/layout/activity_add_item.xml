@@ -14,7 +14,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <EditText
                 android:id="@+id/etName"
@@ -52,13 +52,15 @@
                 android:id="@+id/iBtnImage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:srcCompat="@mipmap/ic_launcher" />
+                android:elevation="0dp"
+                app:srcCompat="@android:drawable/ic_menu_gallery" />
 
             <Button
                 android:id="@+id/btnSave"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/save" />
+
         </LinearLayout>
     </ScrollView>
 
