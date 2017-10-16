@@ -71,8 +71,12 @@ public class SignUP extends AppCompatActivity {
 
 
     public void onClick(View v) {
-        dataHandler();
+
+        if (btnSave == v) {
+            dataHandler();
+        }
     }
+
 
     private void craetAcount(String email, String passw) {
         auth.createUserWithEmailAndPassword(email, passw).addOnCompleteListener(SignUP.this, new OnCompleteListener<AuthResult>() {
