@@ -23,7 +23,8 @@ public class MainActivity extends AppCompatActivity {
     private Button btnSignin;
     private Button btnSignup;
     private Button btnForget;
-
+    private FirebaseAuth auth;
+    private FirebaseUser firebaseUser;
 
 
     @Override
@@ -40,8 +41,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
     public void Onlclick(View v) {
         if (v == btnSignup) {
             Intent intent = new Intent(this, SignUP.class);
@@ -49,14 +48,29 @@ public class MainActivity extends AppCompatActivity {
 
         }
         if (v == btnSignin) {
-            Intent intent = new Intent(this, MainListActivity.class);
-            startActivity(intent);
-
+            signIn("asd@asd.com","asdasd");
         }
 
 
     }
 
+    private void signIn(String email, String passw) {
+        auth.signInWithEmailAndPassword(email, passw).addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    Toast.makeText(MainActivity.this, "signIn Successful.", Toast.LENGTH_SHORT).show();
+                     Intent intent=new Intent(MainActivity.this,MainListActivity.class);
+                       startActivity(intent);
+
+                } else {
+                    Toast.makeText(MainActivity.this, "signIn failed." + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    task.getException().printStackTrace();
+                }
+            }
+        });
+
+    }
 }
 
 

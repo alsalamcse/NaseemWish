@@ -31,16 +31,16 @@ public class SignUP extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-        auth = FirebaseAuth.getInstance();
-        firebaseUser = auth.getCurrentUser();
-        if (firebaseUser == null) {
-            startActivity(new Intent(this, MainListActivity.class));
-            finish();
+        //auth = FirebaseAuth.getInstance();
+        //firebaseUser = auth.getCurrentUser();
+       // if (firebaseUser == null) {
+            //startActivity(new Intent(this, MainListActivity.class));
+           // finish();
             ;
-            return;
-        } else {
-            String userName = firebaseUser.getDisplayName();
-        }
+          //  return;
+        //} else {
+         //   String userName = firebaseUser.getDisplayName();
+        //}
 
         etName = (EditText) findViewById(R.id.etName);
         etEmail2 = (EditText) findViewById(R.id.etEmail2);
@@ -94,7 +94,9 @@ public class SignUP extends AppCompatActivity {
 
         });
     }
-}
+
+
+    }
 
 
 
