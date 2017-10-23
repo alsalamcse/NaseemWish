@@ -16,7 +16,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.naseem.naseemwish.mainlistfragments.MainListActivity;
 
-public class MainActivity extends AppCompatActivity {
+import static com.naseem.naseemwish.R.id.etEmail2;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText etEmail;
     private EditText etPass;
@@ -38,18 +40,20 @@ public class MainActivity extends AppCompatActivity {
         btnSignup = (Button) findViewById(R.id.btnSignup);
         etEmail = (EditText) findViewById(R.id.etEmail);
         etPass = (EditText) findViewById(R.id.etPass);
+        btnSignin.setOnClickListener(this);
+        btnSignup.setOnClickListener(this);
     }
 
-
-    public void Onlclick(View v) {
-        if (v == btnSignup) {
-            Intent intent = new Intent(this, SignUP.class);
-            startActivity(intent);
-
+    private void dataHandler() {
+        String stEmail = etEmail.getText().toString();
+        String stPassw = etPass.getText().toString();
+        boolean isok = true;
+        if(stEmail.length()==0 || stEmail.indexOf('@')<1)
+        {
+            etEmail.setError("Wrong Email");
+            isok=false;
         }
-        if (v == btnSignin) {
-            signIn("asd@asd.com","asdasd");
-        }
+        signIn(stEmail, stPassw);
 
 
     }
@@ -71,6 +75,19 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-}
+
+    @Override
+    public void onClick(View view) {
+        if (view==btnSignin){
+            dataHandler();
+        }
+
+        if (view==btnSignup){
+            Intent i = new Intent(this,SignUP.class);
+            startActivity(i);
+        }
+
+        }
+    }
 
 

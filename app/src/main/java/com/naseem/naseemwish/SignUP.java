@@ -31,22 +31,13 @@ public class SignUP extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-        //auth = FirebaseAuth.getInstance();
-        //firebaseUser = auth.getCurrentUser();
-       // if (firebaseUser == null) {
-            //startActivity(new Intent(this, MainListActivity.class));
-           // finish();
-            ;
-          //  return;
-        //} else {
-         //   String userName = firebaseUser.getDisplayName();
-        //}
-
         etName = (EditText) findViewById(R.id.etName);
         etEmail2 = (EditText) findViewById(R.id.etEmail2);
         etPass2 = (EditText) findViewById(R.id.etPass2);
         etRepass = (EditText) findViewById(R.id.etRepass);
         btnSave = (Button) findViewById(R.id.btnSave);
+        auth=FirebaseAuth.getInstance();
+        firebaseUser=auth.getCurrentUser();
     }
 
 
@@ -84,6 +75,7 @@ public class SignUP extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     Toast.makeText(SignUP.this, "Authentication Successful", Toast.LENGTH_SHORT).show();
+
                     finish();
                 } else {
                     Toast.makeText(SignUP.this, "Authentication failed" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
