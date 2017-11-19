@@ -44,42 +44,44 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnSignup.setOnClickListener(this);
     }
 
-    private void dataHandler() {
-        String stEmail = etEmail.getText().toString();
-        String stPassw = etPass.getText().toString();
-        boolean isok = true;
-        if(stEmail.length()==0 || stEmail.indexOf('@')<1)
-        {
-            etEmail.setError("Wrong Email");
-            isok=false;
-        }
-        signIn(stEmail, stPassw);
+   // private void dataHandler() {
+        //String stEmail = etEmail.getText().toString();
+        //String stPassw = etPass.getText().toString();
+       // boolean isok = true;
+       // if(stEmail.length()==0 || stEmail.indexOf('@')<1)
+      //  {
+       //     etEmail.setError("Wrong Email");
+       //     isok=false;
+      //  }
+       // signIn(stEmail, stPassw);
 
 
-    }
+    //}
 
-    private void signIn(String email, String passw) {
-        auth.signInWithEmailAndPassword(email, passw).addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+   // private void signIn(String email, String passw) {
+       // auth.signInWithEmailAndPassword(email, passw).addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
             @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    Toast.makeText(MainActivity.this, "signIn Successful.", Toast.LENGTH_SHORT).show();
-                     Intent intent=new Intent(MainActivity.this,MainListActivity.class);
-                       startActivity(intent);
+           // public void onComplete(@NonNull Task<AuthResult> task) {
+               // if (task.isSuccessful()) {
+                  //  Toast.makeText(MainActivity.this, "signIn Successful.", Toast.LENGTH_SHORT).show();
+                   //  Intent intent=new Intent(MainActivity.this,MainListActivity.class);
+                    //   startActivity(intent);
 
-                } else {
-                    Toast.makeText(MainActivity.this, "signIn failed." + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                    task.getException().printStackTrace();
-                }
-            }
-        });
+               // } else {
+                  //  Toast.makeText(MainActivity.this, "signIn failed." + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                  //  task.getException().printStackTrace();
+               // }
+          //  }
+       // });
 
-    }
+    //}
 
-    @Override
+    //@Override
     public void onClick(View view) {
         if (view==btnSignin){
-            dataHandler();
+           // dataHandler();
+            Intent i = new Intent(this,MainListActivity.class);
+            startActivity(i);
         }
 
         if (view==btnSignup){

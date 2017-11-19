@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.naseem.naseemwish.mainlistfragments.MainListActivity;
 
 public class AddItemActivity extends AppCompatActivity {
 
@@ -38,17 +40,26 @@ public class AddItemActivity extends AppCompatActivity {
             }
         });
     }
-    public void datahandler()
-    {
-        String stName=etName.getText().toString();
-        String stUnits=etUnits.getText().toString();
-        String stAmount=etAmount.getText().toString();
-        String stPrice=etPrice.getText().toString();
-        double amount=Double.parseDouble(stAmount);
-        double price=Double.parseDouble(stPrice);
+    public void datahandler() {
+        String stName = etName.getText().toString();
+        String stUnits = etUnits.getText().toString();
+        String stAmount = etAmount.getText().toString();
+        String stPrice = etPrice.getText().toString();
+        double amount = Double.parseDouble(stAmount);
+        double price = Double.parseDouble(stPrice);
 
         DatabaseReference reference;
+        reference= FirebaseDatabase.getInstance().getReference();
+        reference.child("list").setValue(stName);
     }
+//    public void onClick(View v)
+//    {
+//        if(btnSave==v)
+//        {
+//            Intent i = new Intent(this,MainListActivity.class);
+//            startActivity(i);
+//        }
+//    }
 
 
 }
