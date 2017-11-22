@@ -85,9 +85,7 @@ public class AddItemActivity extends AppCompatActivity {
             }
         });
 
-
         //reference.child("list").setValue(stName);
-
 
     }
 
