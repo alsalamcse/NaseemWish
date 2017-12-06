@@ -16,7 +16,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.naseem.naseemwish.mainlistfragments.MainListActivity;
 
-public class SignUP extends AppCompatActivity {
+public class SignUP extends AppCompatActivity implements View.OnClickListener{
 
     private EditText etName;
     private EditText etEmail2;
@@ -35,60 +35,55 @@ public class SignUP extends AppCompatActivity {
         etEmail2 = (EditText) findViewById(R.id.etEmail2);
         etPass2 = (EditText) findViewById(R.id.etPass2);
         etRepass = (EditText) findViewById(R.id.etRepass);
-        btnSave = (Button) findViewById(R.id.btnSave);
+        btnSave=(Button)findViewById(R.id.btnSave);
+        btnSave.setOnClickListener(this);
         auth=FirebaseAuth.getInstance();
         firebaseUser=auth.getCurrentUser();
     }
-
-
     private void dataHandler() {
-        String stEmail = etEmail2.getText().toString();
-        String stName = etName.getText().toString();
-        String stPassw = etPass2.getText().toString();
-        String stRepassw = etRepass.getText().toString();
-        boolean isok = true;
-        if(stEmail.length()==0 || stEmail.indexOf('@')<1)
-        {
-            etEmail2.setError("Wrong Email");
-            isok=false;
-        }
-        if(stPassw.length()<8 || stPassw.equals(stRepassw)==false)
-        {
-            etPass2.setError("Bad Password");
-            isok=false;
-        }
-        craetAcount(stEmail, stPassw);
+        String email = etEmail2.getText().toString();
+        String passw = etPass2.getText().toString();
+
+        createAccount(email,passw);
     }
 
 
-    public void onClick(View v) {
 
-        if (btnSave == v) {
-            dataHandler();
-        }
-    }
-
-
-    private void craetAcount(String email, String passw) {
-        auth.createUserWithEmailAndPassword(email, passw).addOnCompleteListener(SignUP.this, new OnCompleteListener<AuthResult>() {
+    private void createAccount(String email,String passw){
+        auth.createUserWithEmailAndPassword(email, passw).addOnCompleteListener(SignUP.this, new OnCompleteListener<AuthResult>()
+        {
             @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
+            public void onComplete(@NonNull Task<AuthResult> task)
+            {
+                if (task.isSuccessful())
+                {
                     Toast.makeText(SignUP.this, "Authentication Successful", Toast.LENGTH_SHORT).show();
-
+                    //updateUserProfile(task.getResult().getUser());
                     finish();
-                } else {
-                    Toast.makeText(SignUP.this, "Authentication failed" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(SignUP.this,"Authentication failed"+task.getException().getMessage(),
+                            Toast.LENGTH_SHORT).show();
                     task.getException().printStackTrace();
                 }
             }
-
-
         });
-    }
+
+
 
 
     }
+
+
+    public void onClick(View view) {
+        if (view==btnSave)
+        {
+            dataHandler();
+        }
+
+    }
+}
 
 
 
